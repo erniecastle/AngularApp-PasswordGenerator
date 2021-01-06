@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
+
+      <div class="field">
+        <label class="label">Length</label>
+        <input (input)="onChangeLength($event.target.value)" type="text" />
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox"
+            >Use Letters
+            <input (change)="onChangeUseLetters()" type="checkbox" />
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox"
+            >Use Numbers
+            <input (change)="onChangeUseNumbers()" type="checkbox" />
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox"
+            >Use Symbols
+            <input (change)="onChangeUseSymbols()" type="checkbox" />
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <button class="button is-link is-fullwidth"
+          [disabled]="
+            !(length && (includeLetters || includeNumbers || includeSymbols))
+          "
+          (click)="onButtonClick()"
+        >
+          Generate!
+        </button>
+      </div>
+      <br>
+     <!-- this is an structural Directive ngIf -->
+      <div class="box" *ngIf="password">
+        <label class="label">Your password</label>
+        <input [value]="getPassword()" />
+      </div>
+
+      <h6 class="subtitle is-6">Developed by: www.erniecastle.com</h6>
+    </div>
+  </div>
+</div>
